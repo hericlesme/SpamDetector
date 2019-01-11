@@ -8,15 +8,18 @@ import pandas
 data = pandas.read_csv('spam.csv', encoding='latin-1')
 train_data = data[:4400] # 4400 items
 test_data = data[4400:] # 1172 items
+print("Data Loaded!")
 
 # train model
+print("Training model...")
 Classifier = OneVsRestClassifier(SVC(kernel='linear', probability=True))
 Vectorizer = TfidfVectorizer()
 vectorize_text = Vectorizer.fit_transform(train_data.v2)
 Classifier.fit(vectorize_text, train_data.v1)
+print("Model Trained!")
 
 while True:
-    message = input('Insert a message or "Q" to quit... \n >>> ')
+    message = input('\nInsert a message or "Q" to quit... \n >>> ')
     if message == 'Q': break
     Classifier
     Vectorizer
